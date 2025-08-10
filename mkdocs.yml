@@ -3,7 +3,6 @@ site_url: https://gabriels999.github.io/mkdocs-resumes/
 nav:
     - Home: index.md
     - Brag Document: brag.md
-    - Pessoais: about.md
     - Profissionais: skills.md
 
 theme:
