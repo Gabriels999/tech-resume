@@ -11,8 +11,10 @@ plugins:
       post_url_format: "{date}/{slug}"
       categories_allowed:
         - WebDevelopment
+        - DevOps
         - Testing
         - Projects
+        - Tutorials
   - search
 
 nav:
