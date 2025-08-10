@@ -1,7 +1,23 @@
 site_name: Gabriel Santos
 site_url: https://gabriels999.github.io/mkdocs-resumes/
+
+plugins:
+  - blog:
+      authors_file: "{blog}/.authors.yml"
+      blog_dir: blog
+      blog_toc: true
+      post_dir: "{blog}/posts"
+      post_date_format: full
+      post_url_format: "{date}/{slug}"
+      categories_allowed:
+        - WebDevelopment
+        - Testing
+        - Projects
+  - search
+
 nav:
     - Home: index.md
+    - Blog: blog/index.md
     - Brag Document: brag.md
     - Profissionais: skills.md
 

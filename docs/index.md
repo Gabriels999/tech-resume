@@ -13,7 +13,7 @@ Eu sou um desenvolvedor fullstack com conhecimentos em:
 
 - [Github](https://github.com/Gabriels999)
 - [Linkedin](https://www.linkedin.com/in/gabriel-santos-87aa58227/)
-- [Email](gab.tec97@gmail.com)
+- [Email](mailto:gab.tec97@gmail.com)
 
 ## Projetos
 Vem dar uma olhada nos projetos que fiz que acho mais legais!

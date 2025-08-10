@@ -1,0 +1,12 @@
+authors:
+  gabriel:
+    name: Gabriel Santos
+    description: Desenvolvedor Full Stack
+    avatar: https://github.com/Gabriels999.png
+    url: https://github.com/Gabriels999
+  
+  # Você pode adicionar outros autores futuramente, como:
+  # convidado:
+  #   name: Nome do Convidado
+  #   description: Descrição do autor convidado
+  #   avatar: url_da_foto
