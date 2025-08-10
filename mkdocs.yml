@@ -24,4 +24,4 @@ theme:
     - navigation.tabs
 
 extra_css:
-  - stylesheets/extra/css
+  - stylesheets/extra.css
