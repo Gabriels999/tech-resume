@@ -1,5 +1,5 @@
 ---
-date: 2025-08-11
+date: 2025-08-12
 categories:
     - Books
     - Tutorials
@@ -10,11 +10,16 @@ authors:
 # Se arquitetura limpa é boa, então a suja é ruim ?
 
 <p>Há alguns anos existe uma certo debate sobre arquiteturas no meio tech, especialmente entre aqueles que se propõem a estudar system design.
-A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido. Não necessariamente por ser um sistema, mas sim pelo planejamento.</p>
+A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido investir tempo a fim de encontrar a forma mais otimizada possível. Não necessariamente por ser um sistema, mas sim pelo planejamento.</p>
 <p>Esse é um conceito simples de se transportar para outros contextos. Imagine por exemplo que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém.</p>
+
 <!-- more -->
+
 <p>Inevitavelmente um dos seus primeiros passos vai ser pensar em como chegar lá ou talvez onde vai passar esses dias. Talvez um hotel ou uma pousada sirvam. Mas o ponto é que dificilmente você vai simplesmente começar essa jornada sem ter um mínimo de <strong>planejamento</strong>, e é sobre isso que eu quero falar.</p>
-<p>Pois bem, recentemente eu finalizei a leitura do <a href="https://www.amazon.com.br/Arquitetura-Limpa-Artes%C3%A3o-Estrutura-Software/dp/8550804606">Arquitetura Limpa: o Guia do Artesão para Estrutura e Design de Software</a> e confesso que o que me motivou a começar essa leitura foi a curiosidade pelo tópico arquiteturas.</p>
+
+## -- Nome genérico de subtítulo --
+
+<p>Pois bem, recentemente eu finalizei a leitura do <a target="_blank" href="https://www.amazon.com.br/Arquitetura-Limpa-Artes%C3%A3o-Estrutura-Software/dp/8550804606">Arquitetura Limpa: o Guia do Artesão para Estrutura e Design de Software</a> e confesso que o que me motivou a começar essa leitura foi a curiosidade pelo tópico arquiteturas.</p>
 <p>Eu não sabia exatamente o que esperar porque não estava tão familiarizado com todo o contexto da arquitetura para além do que mais se é falado:</p>
 
 - Envolve organização de código de alguma maneira mais eficiente.
@@ -29,9 +34,28 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 - Maior testabilidade do seu código.
 - Melhor legibilidade.
 - Melhor organização.
+- Maior desacoplamento.
 
 <p>E tudo isso parece incrível. Se eu tenho a alternativa de seguir essa filosofia e ter esses benefícios, não existe nenhum motivo para não o fazer, certo ?</p>
 <p>A resposta para isso, quase como sempre em nossa área, é: depende.</p>
 <p><i>Agora eu devo ter virado sênior.</i></p>
 
 ## Ok, mas o que exatamente é arquitetura limpa ?
+
+<p>Caso você não tenha a paciência e foco necessários para ler o livro na integra, ou simplesmente não queira, eu sugiro fortemente que tente mesmo assim pois essa é uma leitura que vale a pena e recomendo a todos os colegas de profissão.</p>
+<p>Porém, se realmente não quer fazer isso, existe essa outra alternativa: <a target="_blank" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">o blog do Uncle Bob</a>, onde ele em 2012 ele fez um post a respeito da arquitetura limpa. Nesse post você vai encontrar um resumo bastante breve de tudo que é elaborado no livro ao longo de quase 400 páginas. Além disso, também será recebido com essa imagem:</p>
+
+<img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" alt="Diagrama da arquitetura limpa">
+
+<p>A ideia principal dessa arquitetura é que você organize o seu projeto em camadas. Ao longo do livro é elaborado sobre como provavelmente vai existir um número mínimo de camadas em que faça sentido organizar o código para que tenhamos o melhor resultado com essa arquitetura, e a sugestão de Robert Martin para esse número é 4, assim como na imagem.</p>
+<p>Nós vamos nos concentrar no círculo e deliberadamente ignorar os blocos no canto inferior direito. A forma como devemos ler o círculo é na direção contrária das setas pretas que temos na imagem e em breve discutiremos sobre essas setas em si.</p>
+
+### Entities
+
+<p>Aqui temos a camada principal da aplicação. Normalmente quando vamos criar um projeto uma das poucas coisas que temos razoavelmente estabelecidas (e que ainda assim com certeza vai mudar depois) são as entidades envolvidas com as atividades daquele projeto. Suponha que você vai criar um projeto donos de livrarias vão entrar e anunciar seus livros para que os usuários finais possam entrar e comprá-los. Algo parecido com isso:</p>
+
+<img src="../../../../../assets/images/entities.png">
+
+<p>Ou seja, você sabe que esses são os blocos que vão estar envolvidos nas ações dos usuários. E até esse momento é possível pensar no sistema por dois pontos de vista, tanto pelo do User quanto pelo do BookstoreOwner. A princípio não parece que Book vai ser responsável por alguma ação. Essa análise inicial nos permite pensar na próxima camada.</p>
+
+### Use Cases
