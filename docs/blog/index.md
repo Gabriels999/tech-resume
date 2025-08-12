@@ -1,4 +1,4 @@
-# Blog do Gabriel
+# Blog
 
 Bem-vindo ao meu blog! Aqui compartilho experiências sobre desenvolvimento, carreira em tech, projetos pessoais e reflexões sobre o mundo da programação.
 

@@ -15,6 +15,7 @@ plugins:
         - Testing
         - Projects
         - Tutorials
+        - Books
   - search
 
 nav:
