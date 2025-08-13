@@ -9,8 +9,8 @@ authors:
 
 # Se arquitetura limpa é boa, então a suja é ruim ?
 
-<p>Há alguns anos existe uma certo debate sobre arquiteturas no meio tech, especialmente entre aqueles que se propõem a estudar system design.
-A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido investir tempo a fim de encontrar a forma mais otimizada possível. Não necessariamente por ser um sistema, mas sim pelo planejamento.</p>
+<p>Há dezenas de anos existe debate sobre arquiteturas na engenharia de software, especialmente entre aqueles que se propõem a estudar system design.
+A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido investir tempo a fim de encontrar a forma mais otimizada possível. Não necessariamente porque um sistema merece esse tipo de atenção, mas sim porque planejar, no geral, costuma ser uma atividade muito recompensadora.</p>
 <p>Esse é um conceito simples de se transportar para outros contextos. Imagine por exemplo que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém.</p>
 
 <!-- more -->
@@ -26,15 +26,15 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 - Aparentemente é bom.
 
 
-<p>Apesar disso, eu tinha algumas perguntas próprias que esperava serem respondidas ao longo dos capítulos: <strong>Se a arquitetura boa é a limpa, a suja é ruim ? Como exatamente a limpa se difere da suja e como isso é analisado ?</strong></p>
+<p>Apesar disso, eu tinha algumas perguntas próprias que esperava serem respondidas ao longo dos capítulos: <strong>Se a arquitetura boa é a limpa, a suja é ruim ? Quais são exatamente as diferenças ? Como é analisado que a limpa é melhor ?</strong></p>
 
 <p>Para a minha surpresa, eu tive essas respostas ao longo da leitura, mas elas parecem ter sido diferentes do que o autor ser propôs a divulgar. Não me entenda mal, eu adorei o livro, os conceitos apresentados e como qualquer programador com um conceito novo e empolgante tentei uma implementação quase que imediatamente após fechar o livro.</p>
 <p>Toda a explicação de porque aqueles eram conceitos relevantes fez muito sentido, e aplicar essas ideias em um projeto é algo animador porque a cada resultado que você obtém que se alinha com os mencionados no livro, isso te dá mais vontade de continuar. Alguns desses resultados são:</p>
 
-- Maior testabilidade do seu código.
-- Melhor legibilidade.
-- Melhor organização.
 - Maior desacoplamento.
+- Maior testabilidade do seu código.
+- Melhor organização.
+- Melhor legibilidade.
 
 <p>E tudo isso parece incrível. Se eu tenho a alternativa de seguir essa filosofia e ter esses benefícios, não existe nenhum motivo para não o fazer, certo ?</p>
 <p>A resposta para isso, quase como sempre em nossa área, é: depende.</p>
@@ -42,7 +42,7 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 
 ## Ok, mas o que exatamente é arquitetura limpa ?
 
-<p>Caso você não tenha a paciência e foco necessários para ler o livro na integra, ou simplesmente não queira, eu sugiro fortemente que tente mesmo assim pois essa é uma leitura que vale a pena e recomendo a todos os colegas de profissão.</p>
+<p>Caso você não tenha a paciência e foco necessários para ler o livro na íntegra, ou simplesmente não queira, eu sugiro fortemente que tente mesmo assim pois essa é uma leitura que vale a pena e recomendo a todos os colegas de profissão.</p>
 <p>Porém, se realmente não quer fazer isso, existe essa outra alternativa: <a target="_blank" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">o blog do Uncle Bob</a>, onde ele em 2012 ele fez um post a respeito da arquitetura limpa. Nesse post você vai encontrar um resumo bastante breve de tudo que é elaborado no livro ao longo de quase 400 páginas. Além disso, também será recebido com essa imagem:</p>
 
 <img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" alt="Diagrama da arquitetura limpa">
