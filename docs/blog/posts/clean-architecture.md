@@ -9,18 +9,18 @@ authors:
 
 # Se arquitetura limpa é boa, então a suja é ruim ?
 
-<p>Há dezenas de anos existe debate sobre arquiteturas na engenharia de software, especialmente entre aqueles que se propõem a estudar system design.
+<p>Há dezenas de anos existe o debate sobre arquiteturas na engenharia de software, especialmente entre aqueles que se propõem a estudar system design.
 A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido investir tempo a fim de encontrar a forma mais otimizada possível. Não necessariamente porque um sistema merece esse tipo de atenção, mas sim porque planejar, no geral, costuma ser uma atividade muito recompensadora.</p>
-<p>Esse é um conceito simples de se transportar para outros contextos. Imagine por exemplo que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém.</p>
+<p>Essa é uma ideia simples e fácil de se transportar para outros contextos. Imagine por exemplo que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém.</p>
 
 <!-- more -->
 
-<p>Inevitavelmente um dos seus primeiros passos vai ser pensar em como chegar lá ou talvez onde vai passar esses dias. Talvez um hotel ou uma pousada sirvam. Mas o ponto é que dificilmente você vai simplesmente começar essa jornada sem ter um mínimo de <strong>planejamento</strong>, e é sobre isso que eu quero falar.</p>
+<p>Inevitavelmente um dos seus primeiros passos vai ser pensar em como chegar lá ou talvez onde vai passar esses dias, talvez um hotel ou uma pousada. Mas o ponto é que dificilmente você vai simplesmente começar essa jornada sem ter um mínimo de <strong>planejamento</strong>, e é sobre isso que eu quero falar.</p>
 
 ## -- Nome genérico de subtítulo --
 
 <p>Pois bem, recentemente eu finalizei a leitura do <a target="_blank" href="https://www.amazon.com.br/Arquitetura-Limpa-Artes%C3%A3o-Estrutura-Software/dp/8550804606">Arquitetura Limpa: o Guia do Artesão para Estrutura e Design de Software</a> e confesso que o que me motivou a começar essa leitura foi a curiosidade pelo tópico arquiteturas.</p>
-<p>Eu não sabia exatamente o que esperar porque não estava tão familiarizado com todo o contexto da arquitetura para além do que mais se é falado:</p>
+<p>Eu não sabia exatamente o que esperar porque não estava tão familiarizado com o contexto da arquitetura para além do que mais se é falado:</p>
 
 - Envolve organização de código de alguma maneira mais eficiente.
 - Aparentemente é bom.
@@ -35,6 +35,9 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 - Maior testabilidade do seu código.
 - Melhor organização.
 - Melhor legibilidade.
+- Isso tudo vai implicar em um custo de manutenção e sustentação consideravelmente mais baixos:
+    - Seja por um desenvolvedor precisar de menos tempo para resolver possíveis bugs
+    - Seja pelo o sistema ser mais confiável devido a sua testabilidade, e naturalmente ter menos bugs.
 
 <p>E tudo isso parece incrível. Se eu tenho a alternativa de seguir essa filosofia e ter esses benefícios, não existe nenhum motivo para não o fazer, certo ?</p>
 <p>A resposta para isso, quase como sempre em nossa área, é: depende.</p>
@@ -52,10 +55,25 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 
 ### Entities
 
-<p>Aqui temos a camada principal da aplicação. Normalmente quando vamos criar um projeto uma das poucas coisas que temos razoavelmente estabelecidas (e que ainda assim com certeza vai mudar depois) são as entidades envolvidas com as atividades daquele projeto. Suponha que você vai criar um projeto donos de livrarias vão entrar e anunciar seus livros para que os usuários finais possam entrar e comprá-los. Algo parecido com isso:</p>
+<p>Aqui temos a camada principal da aplicação. Normalmente quando vamos criar um projeto uma das poucas coisas que temos razoavelmente estabelecidas (e que ainda assim com certeza irão mudar depois) são as entidades envolvidas com as atividades daquele projeto. Suponha que você vai criar um projeto em que donos de livrarias vão entrar e anunciar seus livros para que os usuários finais possam entrar e comprá-los e eventualmente até lê-los. Algo parecido com isso:</p>
 
 <img src="../../../../../assets/images/entities.png">
 
 <p>Ou seja, você sabe que esses são os blocos que vão estar envolvidos nas ações dos usuários. E até esse momento é possível pensar no sistema por dois pontos de vista, tanto pelo do User quanto pelo do BookstoreOwner. A princípio não parece que Book vai ser responsável por alguma ação. Essa análise inicial nos permite pensar na próxima camada.</p>
 
 ### Use Cases
+
+<p>Esta é possivelmente a camada mais autoexplicativa de todas. Aqui é o espaço onde todos as entidades vão realizar alguma ação. Na última seção identificamos os agentes do fluxo, que seriam o BookstoreOwner e o User. Então aqui é o espaço onde criaremos o fluxo necessário para essas ações. Alguns exemplos são:</p>
+
+- BookstoreOwner
+    - createBook()
+    - inactivateBook()
+- User
+    - buyBook()
+    - readBook()
+    - updateBookProgress()
+
+<img src="../../../../../assets/images/usecases.png">
+
+
+### Controllers
