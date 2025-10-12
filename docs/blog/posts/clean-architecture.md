@@ -10,15 +10,15 @@ authors:
 # Se arquitetura limpa é boa, então a suja é ruim ?
 
 <p>Há dezenas de anos existe o debate sobre arquiteturas na engenharia de software, especialmente entre aqueles que se propõem a estudar system design.
-A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece ser algo que faz sentido investir tempo a fim de encontrar a forma mais otimizada possível. Não necessariamente porque um sistema merece esse tipo de atenção, mas sim porque planejar, no geral, costuma ser uma atividade muito recompensadora.</p>
-<p>Inclusive, essa é uma ideia simples e fácil de se transportar para outros contextos. Imagine por exemplo que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém. Ou talvez conheça, isso na verdade é indiferente. O simples fato de reunir as pessoas que podem te apoiar ou que você queira visitar durante a viagem, já faz parte do ato de planejar.</p>
+A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto de) sistemas parece fazer sentido investir tempo para encontrar a forma mais otimizada possível. Não necessariamente porque um sistema merece esse tipo de atenção, mas sim porque planejar, no geral, costuma ser uma atividade muito recompensadora.</p>
+<p>Inclusive, essa é uma ideia simples e fácil de se transportar para outros contextos. Imagine, por exemplo, que você vai fazer uma viagem de 7 dias para outro país onde não conhece ninguém. Ou talvez conheça, isso na verdade é indiferente. O simples fato de reunir as pessoas que podem te apoiar ou que você queira visitar durante a viagem, já faz parte do ato de planejar.</p>
 
 <!-- more -->
 
-<p>De qualquer forma, inevitavelmente um dos seus primeiros passos vai ser pensar em como chegar lá ou talvez onde vai passar esses dias, se em um hotel, camping ou até uma pousada. Ah, também é preciso qual ver qual o aeroporto mais próximo, tanto de sua partida quanto de sua chegada. Mora longe do aeroporto ? Então também é preciso planejar como chegar no aeroporto a tempo. Acho que já deu para entender, o ponto é que dificilmente você vai simplesmente começar essa jornada sem ter um mínimo de <b>planejamento</b>.</p>
+<p>De qualquer forma, inevitavelmente um dos seus primeiros passos vai ser pensar em como chegar lá ou talvez onde vai passar esses dias, se em um hotel, camping ou até uma pousada. Ah, também é preciso ver qual o aeroporto mais próximo, tanto de sua partida quanto de sua chegada. Mora longe do aeroporto ? Então também é preciso planejar como chegar ao aeroporto a tempo. Acho que já deu para entender, o ponto é que dificilmente você vai simplesmente começar essa jornada sem ter um mínimo de <b>planejamento</b>.</p>
 <p>Não se engane, fazer todas essas considerações não faz de nós necessariamente bem preparados. A grande verdade é que é muito mais fácil planejar e fazer as escolhas mais cômodas para o contexto, do que simplesmente sair fazendo. A segunda opção vai ser frequentemente mais desconfortável e também mais cara. E sim, esse parágrafo já fala sobre arquitetura de software.</p>
 
-## -- Nome genérico de subtítulo --
+## Minhas impressões sobre o livro
 
 <p>Pois bem, finalizei recentemente a leitura do <a target="_blank" href="https://www.amazon.com.br/Arquitetura-Limpa-Artes%C3%A3o-Estrutura-Software/dp/8550804606">Arquitetura Limpa: o Guia do Artesão para Estrutura e Design de Software</a> e confesso que o que me motivou a começar essa leitura foi a curiosidade pelo tópico arquiteturas.</p>
 <p>Eu não sabia exatamente o que esperar porque não estava tão familiarizado com o contexto da arquitetura para além do que mais se é falado:</p>
@@ -29,8 +29,8 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 
 <p>Apesar disso, eu tinha algumas perguntas próprias que esperava serem respondidas ao longo dos capítulos: <b>Se a arquitetura boa é a limpa, a suja é ruim ? Quais são exatamente as diferenças ? Como é analisado que a limpa é melhor ?</b></p>
 
-<p>Eu tive essas respostas ao longo da leitura, mas para minha surpresa, elas parecem ter sido diferentes do que o autor ser propôs a divulgar. Não me entenda mal, eu adorei o livro e os conceitos apresentados. Inclusive, como qualquer programador com um conceito novo e empolgante, tentei uma implementação quase que imediatamente após fechar o livro.</p>
-<p>Toda a explicação de porque aqueles eram conceitos relevantes fez muito sentido, e aplicar essas ideias em um projeto é algo animador porque a cada resultado que você obtém que se alinha com os mencionados no livro, isso te dá mais vontade de continuar. Alguns desses resultados são:</p>
+<p>Eu tive essas respostas ao longo da leitura, mas para minha surpresa, elas parecem ter sido diferentes do que o autor se propôs a divulgar. Não me entenda mal, eu adorei o livro e os conceitos apresentados. Inclusive, como qualquer programador com um conceito novo e empolgante, tentei uma implementação quase que imediatamente após fechar o livro.</p>
+<p>Toda a explicação de porque aqueles eram conceitos relevantes fez muito sentido, e aplicar essas ideias em um projeto é algo animador porque a cada resultado obtido que se alinha com os mencionados no livro, isso dá mais vontade de continuar. Alguns desses resultados são:</p>
 
 - Maior desacoplamento.
 - Consequentemente, maior testabilidade do seu código.
@@ -38,7 +38,7 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 - Melhor legibilidade.
 - Isso tudo vai implicar em um custo de manutenção e sustentação consideravelmente mais baixos:
     - Seja por um desenvolvedor precisar de menos tempo para resolver possíveis bugs
-    - Seja pelo o sistema ser mais confiável devido a sua testabilidade, e naturalmente ter menos bugs.
+    - Seja por o sistema ser mais confiável devido a sua testabilidade, e naturalmente ter menos bugs.
 
 <p>E tudo isso parece incrível. Se tenho a alternativa de seguir essa filosofia e ter esses benefícios, não existe nenhum motivo para não o fazer, certo ?</p>
 <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWprNjN3Y2t4MjhzMzd3MTQ5eHZ1bmkyYTM1bGI1ZmdpMjlwMnF2YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xiKgE3i7bSWUUccy1V/giphy.gif" alt="Ryan from The Office: 'Nah... Sorry man.'" />
@@ -51,11 +51,11 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 ## Ok, mas o que exatamente é arquitetura limpa ?
 
 <p>Primeiramente, sugiro fortemente que tente fazer a leitura desse livro pois acho que vale a pena e recomendo a todos os colegas de profissão. Tente, ainda que você não tenha a paciência e foco necessários para ler o livro na íntegra, ou simplesmente não queira.</p>
-<p>Porém, se realmente não quer fazer isso, existe essa outra alternativa: <a target="_blank" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">o blog do Uncle Bob</a>, onde ele em 2012 ele fez um post a respeito da arquitetura limpa. Nesse post você vai encontrar um resumo bastante breve de tudo que é elaborado no livro ao longo de suas quase 400 páginas. Além disso, também será recebido com essa imagem:</p>
+<p>Porém, se realmente não quer fazer isso, existe essa outra alternativa: <a target="_blank" href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">o blog do Uncle Bob</a>, onde, em 2012, ele fez um post a respeito da arquitetura limpa. Nesse post você vai encontrar um resumo bastante breve de tudo que é elaborado no livro ao longo de suas quase 400 páginas. Além disso, também será recebido com essa imagem:</p>
 
 <img src="https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg" alt="Diagrama da arquitetura limpa">
 
-<p>A ideia principal dessa arquitetura é que você organize o seu projeto em camadas. Ao longo do livro é elaborado sobre como provavelmente vai existir um número mínimo de camadas em que faça sentido organizar o código para que tenhamos o melhor resultado com essa arquitetura, e a sugestão de Robert Martin para esse número é 4, assim como na imagem.</p>
+<p>A ideia principal dessa arquitetura é que você organize o seu projeto em camadas. Ao longo do livro, o autor elabora sobre como provavelmente vai existir um número mínimo de camadas em que faça sentido organizar o código para que tenhamos o melhor resultado com essa arquitetura, e a sugestão de Robert Martin para esse número é 4, assim como na imagem.</p>
 <p>Nesse momento nós vamos nos concentrar no círculo e deliberadamente ignorar os blocos no canto inferior direito. A forma como devemos ler o círculo é na direção contrária das setas pretas que temos na imagem e em breve discutiremos sobre essas setas em si.</p>
 
 ### Entities - Enterprise Business Rules
@@ -155,7 +155,7 @@ A ideia de planejar como os fluxos irão existir dentro de um (ou de um conjunto
 <p>Quanto a opiniões pessoais, vou começar dizendo que humildemente <b>não concordo</b> com a arquitetura limpa apontada pelo Martin.</p>
 <p>A ideia central é ótima e sou adepto dela, mas também sou adepto de ter algumas coisas razoavelmente acopladas ao sistema. Isso porque passei muito tempo em contato com frameworks web mais parrudos como Django e que determinam uma série de coisas para mim enquanto desenvolvedor. Obviamente, cada escolha é uma renúncia, então não estou necessariamente advogando que esse é o melhor formato de trabalho e sim dizendo que do ponto de vista de velocidade de desenvolvimento e também de gestão organizacional não vi em meus anos de experiência um motivo racional para evitar se apoiar em pedaços de software estruturados como é o caso deste e de outros frameworks parecidos.</p>
 <p>Na realidade, os cenários em que vi problema envolviam uma heterogenização de frameworks web para se trabalhar. Os desenvolvedores nem sempre dominavam a mesma gama de frameworks, o que faz com que as features demorem mais para sair já que de uma forma geral existe sempre um trabalho extra agregado a construção, podendo esse ser o aprofundamento do contexto do sistema e/ou do contexto de o que o framework está fazendo por baixo dos panos.</p>
-<p>O que quero dizer é: para uma empresa que tem uma stack de tecnologia homogênea algumas partes da arquitetura serão bastante opcionais. Se essa empresa tem 6 sistemas e todos são Spring Boot, quebrar esse padrão precisaria de um ótimo, coisa que nem sempre se justifica. Porém, uma vez que se entende que se apoiar em um framework como esse é algo estável, você talvez não tenha tanto ganho focando em deixar seu sistema capaz de rodar completamente agnóstico ao framework.</p>
+<p>O que quero dizer é: para uma empresa que tem uma stack de tecnologia homogênea algumas partes da arquitetura serão bastante opcionais. Se essa empresa tem 6 sistemas e todos são Spring Boot, quebrar esse padrão precisaria de um ótimo motivo, coisa que nem sempre se justifica. Porém, uma vez que se entende que se apoiar em um framework como esse é algo estável, você talvez não tenha tanto ganho focando em deixar seu sistema capaz de rodar completamente agnóstico ao framework.</p>
 <p><b>Isso obviamente não significa que podemos acoplar ao framework sem pensar em mais nada.</b> Quer dizer apenas que, se o contrato de acoplar os sistemas e competências dos funcionários de uma organização com um determinado bloco, não faz sentido ter um plano 100% estruturado que te permita descumprir esse contrato quando quiser. Seria quase como comprar um carro já escolhendo o próximo.</p>
 <p>Então para responder a pergunta:</p>
 
