@@ -1,0 +1,991 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://gabriels999.github.io/mkdocs-resumes/blog/2025/08/10/docker-descomplicado-da-teoria-%C3%A0-produ%C3%A7%C3%A3o-com-django-e-aws/">
+      
+      
+      
+        <link rel="next" href="../../../09/15/se-arquitetura-limpa-%C3%A9-boa-ent%C3%A3o-a-suja-%C3%A9-ruim-/">
+      
+      
+      <link rel="icon" href="../../../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Docker descomplicado: Da teoria à produção com Django e AWS - Gabriel Santos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker-descomplicado-da-teoria-a-producao-com-django-e-aws" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Gabriel Santos" class="md-header__button md-logo" aria-label="Gabriel Santos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gabriel Santos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker descomplicado: Da teoria à produção com Django e AWS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-blue" data-md-color-accent="indigo"  aria-label="dark"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="dark" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="yellow" data-md-color-accent="indigo"  aria-label="day"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="day" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../brag/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Brag Document
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../skills/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Profissionais
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Gabriel Santos" class="md-nav__button md-logo" aria-label="Gabriel Santos" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Gabriel Santos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../brag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Brag Document
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Profissionais
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#imagens-vs-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Imagens vs Containers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#um-container-e-uma-lasanha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Um container é uma lasanha ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Um container é uma lasanha ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mas-como-essa-atualizacao-e-feita" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mas como essa atualização é feita ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-iniciando-um-projeto-em-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Iniciando um projeto em Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-vamos-brincar-com-uma-imagem-do-dockerhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Vamos brincar com uma imagem do DockerHub ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vamos-deployar-nosso-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Vamos deployar nosso projeto!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-o-ultimo-inimigo-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - O último inimigo: AWS.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - O último inimigo: AWS.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sugestao-redeploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sugestão - Redeploy:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAQ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referências
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://github.com/Gabriels999.png" alt="Gabriel Santos">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          <a href="https://github.com/Gabriels999">Gabriel Santos</a>
+                        
+                      </strong>
+                      <br>
+                      Desenvolvedor Full Stack
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-08-10 00:00:00+00:00" class="md-ellipsis">Sunday, August 10, 2025</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/devops/">DevOps</a>, 
+                              <a href="../../../../category/projects/">Projects</a>, 
+                              <a href="../../../../category/tutorials/">Tutorials</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              13 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+
+
+<h1 id="docker-descomplicado-da-teoria-a-producao-com-django-e-aws">Docker descomplicado: Da teoria à produção com Django e AWS</h1>
+<p>Este guia tem a intenção de te auxiliar a "dockerizar" o seu projeto Django e fazer deploy do mesmo na AWS a partir da aula que tivemos no Busertech dia 01/07 sobre essa tecnologia.</p>
+<!-- more -->
+
+<h2 id="imagens-vs-containers"><strong>Imagens</strong> vs <strong>Containers</strong></h2>
+<p>Essa afirmação pode parecer simples tendo em vista que coisas que têm nomes diferentes frequentemente não são iguais. Porém, essa diferenciação se faz ainda mais necessária quando o assunto são <strong>imagens</strong> e <strong>containers</strong> em docker.</p>
+<p>Quando falamos de <strong>imagens</strong> em docker estamos nos referindo a ao estado primordial que um projeto pode assumir no contexto docker. Isso porquê a <strong>imagem</strong> é o que dá origem ao <strong>container</strong>.</p>
+<p>Ao longo deste guia faremos a "dockerização" de projetos e uma dessas etapas é tratar estes projetos em formas <strong>imagens</strong>, que são comumente encontrados no <a href='https://hub.docker.com/'>Docker Hub</a></p>
+
+<h2 id="um-container-e-uma-lasanha">Um <strong>container</strong> é uma lasanha ?</h2>
+<p>Sim.</p>
+<p><img src='https://media.istockphoto.com/photos/piece-of-baked-lasagna-closeup-isolated-on-white-background-picture-id1316558471?b=1&k=20&m=1316558471&s=170667a&w=0&h=6pbAWxtmUPyhVHWpUJMT8atTX5MgCIWVbzufk1P9WOM=' alt='Lasagna' width='400'></p>
+<p>Quando o docker faz ou recebe qualquer alteração em seu container o que ele faz é: considerar todo o conteúdo, e não executar todo o ciclo de transformação no que se manteve igual nos procedimentos que lhe forem comandados durante a dockerização do projeto.</p>
+
+<h4 id="mas-como-essa-atualizacao-e-feita">Mas como essa atualização é feita ?</h4>
+<p>Para responder essa pergunta precisamos entender como está disposta a organização do nosso projeto por todo o caminho desde o diretório em nossa máquina até estar online através de uma máquina AWS</p>
+<p>
+Inicialmente a estrutura seria:
+
+Repositório local >>>>**t1**>>>> Docker Hub >>>>**t2**>>>> AWS
+
+Perceba que entre esses 3 ambientes existem duas transferências que apelidei de **t1** e **t2**. Isso porque em cada ocasião o docker é a tecnologia que fará essa transferências para nós, mas elas têm particularidades, mas vamos a resposta enfim. Ao criar um projeto e criar uma imagem docker dele o próprio docker reconhecerá que todo o corpo do projeto é novo e portanto transferirá tudo na t1 sem muito critério. Esse container receberá o comando `docker push` e assim nosso container estará em nosso Docker Hub e o mesmo tipo de situação acontecerá em **t2** exceto que t2 será executada a partir do comando `docker pull`, mas chegaremos lá.
+
+</p>
+<p>Uma das ocasiões em que o docker se sobresai é quando você precisa atualizar um container que já foi deployado. Isso porquê como já dito anteriormente, ao fazer novas transferências o docker vai olhar somente para o que de fato foi alterado, fazendo com que assim as suas transferências abram bem menos brechas para erros, sejam bem mais velozes e por consequência mais eficientes.</p>
+<p>"Tá, mas e a parte da lasanha ?" você deve estar se perguntando. Simples. Quando vamos montar uma lasanha consideramos que cada camada recebe alguns componentes como molho, massa e recheio. Mas a construção da lasanha como um todo depende das camadas anteriores que servem como base e o mesmo vale para o nosso projeto que se apoia em todas as outras transferências anteriores que já fizemos e assim como para termos uma "lasanha alta" precisamos contar com o que já foi construído até o momento o mesmo vale para o projeto. Com o acréscimo de que o docker é esperto o bastante para trabalhar mais apenas o que é novidade no container.</p>
+
+<pre><code>Tecnologias estudadas nessa aula:
+
+1. Docker
+2. Postgresql | Dbeaver
+3. AWS
+</code></pre>
+<pre><code>Objetivos:
+
+- Aprender a utilizar o docker e se familiarizar com ele.
+- Usar imagens externas no docker e rodar localmente.
+- Dockerizar nosso projeto Django e subir na AWS.
+</code></pre>
+<p>Comandos úteis ao longo do projeto:</p>
+<pre><code>Para instalar o docker:
+    1. sudo apt-get remove docker docker.io containerd runc
+    2. sudo apt update
+    3. sudo apt install -y apt-transport-https ca-certificates curl software-properties-common curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - sudo add-apt-repository &quot;deb[arch=amd64] https://download.docker.com/linux/ubuntu focal stable&quot;
+    4. apt-cache policy docker-ce
+    5. sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
+Para verificar a versão instalada do docker:
+    - docker -v
+Para verificar a versão instalada do docker-compose:
+    - docker-compose -v
+Comandos referentes ao usuário (PERGUNTAR):
+    1. sudo usermod -aG docker ${USER}
+    2. su - ${USER}
+    3. groups
+    4. sudo usermod -aG &lt;insiraaquiseuusername&gt;
+Para verificar se a instalação foi realizada corretamente:
+    - docker run hello_world
+</code></pre>
+<p>Caso o docker responda que não foi capaz de encontrar a imagem "hello_world" localmente, parabéns, seu docker foi instalado corretamente. Caso contrário, tente novamente a sequência de comandos, se o problema persistir, busque ajuda.</p>
+<h2 id="1-iniciando-um-projeto-em-docker">1 - Iniciando um projeto em Docker</h2>
+<ul>
+<li>Conheça suas imagens, use o comando: <code>docker images</code></li>
+<li>Baixe o mais novo ubuntu usando o comando: <code>docker pull ubuntu</code></li>
+<li>Rode o <code>docker images</code> novamente e perceba que agora ele lista também a imagem ubuntu que baixamos no último comando.</li>
+<li>Rode o <code>docker ps</code> para listar todos os containers que estão rodando no momento.</li>
+<li>Rode o <code>docker ps -a</code> para visualizar todos os containers já rodados no seu docker, inclusive os que já faleceram.</li>
+<li>Rode <code>docker rm &lt;insira aqui o nome do container&gt; ou &lt;insira aqui o id do container&gt;</code> para apagar um container</li>
+<li>Rode <code>docker rmi &lt;insira o nome da imagem&gt;</code> para apagar uma imagem.</li>
+<li>Rode <code>docker run -it ubuntu bash</code> para rodar um bash a partir da imagem ubuntu.</li>
+<li>A partir deste momento seu comandos de docker não irão funcionar, já que você está em um terminal bash.</li>
+<li>Use <code>exit</code> para encerrar o bash atual e por consequência encerrar o container que executava o ubuntu.</li>
+<li><strong>Explicação</strong><ul>
+<li>Isso acontece porque toda vez que o docker roda uma imagem ele cria um container a partir daquela imagem. Porém, a execução desse container só acontece enquanto ele executar alguma atividade. Caso não seja incluída a partícula <code>-it</code> que significa "aguardar interação com o usuário", ele vai rodar e encerrar o container em seguida, caso este não execute nada em particular.</li>
+</ul>
+</li>
+<li>Tente abrir um terminal novo e rodar um <code>docker ps</code></li>
+<li>Caso seu <code>docker ps</code> não funcione neste novo terminal use o comando:
+  <code>sudo setfacl --modify user:nomedouser:rw /var/run/docker.sock</code></li>
+<li>Nós obtivemos esse comando a partir do <a href ="www.stackoverflow.com">Stack Overflow</a>, então caso tenha algum erro que não está coberto nesta documentação, crie o hábito de visitar esse site.</li>
+<li>Agora, com dois terminais abertos, em um rode novamente o <code>docker run -it ubuntu bash</code> e no segundo terminal rode um <code>docker ps</code> para ver no segundo terminal a execução do bash presente no primeiro terminal.</li>
+<li>Para matar seu processo, em seu segundo terminal, rode um <code>docker kill &lt;insira o nome do container&gt;</code></li>
+<li>Perceba que automaticamente seu primeiro terminal retornará ao estado normal e sairá do bash em que estava anteriormente.</li>
+<li>Entre no <a href="https://hub.docker.com/">Docker Hub</a> e crie uma conta.</li>
+<li>Em seu terminal rode <code>docker login</code> para conectar sua conta docker com seu repositório local</li>
+<li>Procure a imagem do <a href ="https://hub.docker.com/_/postgres?tab=tags">Postgresql</a></li>
+<li>Em seu terminal rode <code>docker pull postgres:10-alpine</code></li>
+<li>Rode um <code>docker ps</code> para perceber que a imagem do postgres foi adicionada à sua lista.</li>
+<li>Para inicializar o postgres pelo docker rode o comando:</li>
+</ul>
+<pre><code>docker run -e POSTGRES_USER=app -e POSTGRES_PASSWORD=app -p 5432:5432 postgres:10-alpine
+</code></pre>
+<ul>
+<li><strong>Explicação</strong>:</li>
+<li>Este comando seta alguns valores para as variáveis de ambiente presentes na imagem do postgresql que visitamos no dockerhub. Caso haja dúvidas, volte e releia a documentação da mesma. Os valores são "app" e as variáveis são o <code>POSTGRES_USER</code> e <code>POSTGRES_PASSWORD</code>.</li>
+<li>Perceba que antes dos nomes das variáveis é passada uma partícula <code>-e</code> que serve para setar variáveis de ambiente. Justamente por isso ela precede os nomes=valor</li>
+<li>Em seguida, antes das portas passamos a partícula <code>-p</code> que significa "Publish" ou "Expose port". O que estamos fazendo neste momento é dizendo que a nossa porta 5432 (que é onde o postgres roda seu processo) deve ser exposta e conectada com a porta 5432 do container docker. Desse jeito conseguimos nos conectar com o processo do container docker e interagir com ele em um terminal na nossa máquina.</li>
+<li>Por fim inserimos o <code>nome_da_imagem:versão_desejada</code></li>
+<li>Se seu terminal retornou um <code>UTC [1] LOG: database system is ready to accept connections</code>, então parabéns, deu tudo certo!</li>
+<li>Senão, caso você já possua um postgres rodando, precisará dar um <code>sudo service postgresql stop</code> para encerrar o processo referente ao postgres que já estará aberto e em seguida rode o comando anterior.</li>
+<li><strong>TAKE A BREAK</strong></li>
+<li>Pode ser que tudo o que tenha feito até aqui tenha sido novo e tem bastante coisa que fez sem necessariamente entender o porquê. Pensando nisso, este pode ser um bom momento para beber uma água e respirar por uns 5min.</li>
+<li>Agora vamos nos conectar com o banco postgresl que subimos pelo docker. Para otimizarmos nosso tempo vamos usar um cliente de banco de dados, assim será mais fácil criar a conexão. O cliente escolhido para este tutorial é o <em>Dbeaver</em>.</li>
+<li>Abra seu dbeaver e crie uma conexão com banco de dados e preencha com "app" os campos <em>database</em>, <em>username</em> e <em>password</em>.</li>
+<li>EXPLICAÇÃO:<ul>
+<li><p> Lembra das variáveis de ambiente que passamos ? O docker criou um banco postgresql de nome="app", username="app" e password="app". Conforme nós passamos no comando de inicialização.</p></li>
+</ul>
+</li>
+<li>Crie uma tabela com uma coluna dentro e em seguida acrescente um dado na tabela.</li>
+<li>Em seguida rode um <code>select * from newtable n</code> para visualizar o dado que você incluiu.</li>
+<li>Volte no seu terminal e derrube o container do banco. Em seguida suba o banco novamente.</li>
+<li>Perceba que sua tabela já não existe mais.</li>
+<li>Em seu terminal rode o comando:</li>
+</ul>
+<pre><code>docker run -e POSTGRES_USER=app -e POSTGRES_PASSWORD=app -p 5432:5432
+-v /home/seuusuario/tmppostgres:/var/lib/postgresql/data postgres:10-alpine
+</code></pre>
+<ul>
+<li>Agora em seu Dbeaver crie uma tabela e uma coluna novamente e preencha com algum dado.</li>
+<li>Derrube seu docker e suba de novo a aplicação do banco.</li>
+<li>Em seguida entre em seu banco pelo Dbeaver e perceba que seus dados estão salvos. Parabéns! A partir de agora seus dados persistem.</li>
+<li>Mas não acredite em mim! Confira.</li>
+<li>Em seu terminal rode <code>cd ~</code> e em seguida rode o comando <code>ll</code></li>
+<li>Perceba que dentre muitas pastas <em>provavelmente</em> só existe uma que foi criada pelo "root" e não pelo seu usuário padrão.</li>
+<li>Rode <code>cd tmppostgres</code> e tenha sua permissão negada. Isso porque a pasta foi criada pelo usuário root e portanto só pode ser acessada pelo mesmo.</li>
+<li>Sendo assim use o comando <code>sudo su</code> e insira sua senha.</li>
+<li>Agora sim podemos rodar <code>cd tmppostgres</code> e lá dentro estão todas as informações que foram criadas pelo container.</li>
+<li>Qual a beleza da coisa ? Mate o seu processo do docker e todas as atualizações permanecerão salvas. Agora sim você pode concluir por conta própria, que seus dados persistem!</li>
+<li><strong>Explicação</strong></li>
+<li>Vamos analisar a anatomia deste comando. Até a parte das portas ele é exatamente a mesma coisa que rodamos anteriormente.<ul>
+<li>A primeira partícula passada após as portas é o <code>-v</code> ou <code>--volume</code> que faz referência ao volume.</li>
+<li>Isso porquê volumes são diretórios de um container docker que são externos ao container. Eles são muito usados para uma finalidade: persistir dados.</li>
+<li>Vamos relembrar como um container docker funciona: Ele é criado, executa o que tem para ser executado dentro dele e por padrão é encerrado. Portanto, se nós derrubamos nosso container rodando o postgres e subirmos de novo, vemos que os dados que inserimos na primeira execução <strong>não são mantidos para a segunda execução</strong>.</li>
+<li>Como volumes são diretórios externos ao container, é possível guardar as alterações criadas na primeira execução em uma máquina que não será encerrada com o fim do projeto, como por exemplo, a nossa máquina pessoal. E é exatamente isso que fizemos com esse comando, passamos o -v e em seguida o endereço em nossa máquina que irá receber tudo o que for gerado de alteração durante a execução do container.</li>
+<li>Uma vez que este container for encerrado e seu processo perdido, nós teremos armazenado tudo em nossa máquina e quando subirmos outro container, basta conectar com esse caminho e pronto.</li>
+<li>Agora não importa em qual processo um dado foi criado, ele será persistido.</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-vamos-brincar-com-uma-imagem-do-dockerhub">2 - Vamos brincar com uma imagem do DockerHub ?</h2>
+<ul>
+<li>Neste momento iremos puxar uma imagem do DockerHub e fazer o rodá-la localmente. A imagem escolhida é a Saleor que é um e-commerce.</li>
+<li>Visite o <a href='https://github.com/saleor/saleor'>Saleor</a> e também o <a href='https://hub.docker.com/r/saleordev/saleor'>DockerHub do Saleor</a></li>
+<li>E faça o <code>docker pull</code> do caminho indicado na página do <a href='https://hub.docker.com/r/saleordev/saleor'>DockerHub Saleor</a></li>
+<li>Em seguida rode <code>docker run -it saleordev/saleor bash</code></li>
+<li>Rode <code>ls --color -lh</code> e agora você tem a capacidade de visualizar os arquivos deste projeto django.</li>
+<li>Rode <code>exit</code></li>
+<li>Agora, somos capazes de rodar o projeto Django como se estivesse em nossa máquina local, porém, não é o que faremos neste momento.</li>
+<li>Rode o comando <code>docker run -it saleordev/saleor</code></li>
+<li>Agora você está rodando o projeto, mas, o que está acontecendo ?</li>
+<li>A resposta para essa pergunta está em visitar a <a href='docs.saleor.io'>documentação</a>.</li>
+<li>A ideia agora é proteger a sua secret key.</li>
+<li>Quando o django cria um projeto ele gera uma secret key porque este campo não deve ficar vazio. Porém, não devemos deixar esta informação sensível tão fácil de encontrar em nosso código. É por isso que iremos criar uma rede para nos conectarmos sem ter que deixar a secret key transparente.</li>
+<li>Criaremos a rede através deste comando: <code>docker network create netsaleor</code></li>
+<li>Em seguida o <code>docker network list</code></li>
+<li>Caso apareça uma lista com o nome 'netsaleor'. Parabéns, você criou uma rede!</li>
+<li>Em seu terminal rode o:</li>
+</ul>
+<pre><code>docker run --rm -d --name postgres -e POSTGRES_USER=app -e POSTGRES_PASSWORD=app --net netsaleor \
+-v /home/seuusuario/tmppostgres:/var/lib/postgresql/data postgres:10-alpine
+</code></pre>
+<ul>
+<li>
+<p><strong>Explicação</strong></p>
+</li>
+<li>
+<p><em>--rm</em> : Comando para remover (rm) automaticamente um container quando ele deixar de existir.</p>
+</li>
+<li><em>-d</em> : Comando para desacoplar (detach) o container e portanto rodá-lo em segundo plano sem printar suas saídas.</li>
+<li><em>--name</em> : Comando para passar um nome (name) para o container.</li>
+<li>
+<p><em>-e</em> : Comando para acessar as variaveís de ambiente (environment).</p>
+</li>
+<li>
+<p>E em seguida rode o <code>docker logs postgres</code> para visualizar os logs do container de nome <em>postgres</em> que criamos no último container.</p>
+</li>
+<li>Agora rode o seguinte comando:</li>
+</ul>
+<pre><code>docker run -d --rm --name=saleor -p 8000:8000 --net netsaleor -e DATABASE_URL=postgres://app:app@db:5432/app -e SECRET_KEY=hjagdsjyatqt83652oiygjyrqi36 --link postgres:db saleordev/saleor
+</code></pre>
+<ul>
+<li>Verifique o <a href='http://localhost:8000/'>localhost:8000</a> e veja: a aplicação Saleor está rodando!</li>
+<li>Rodando tão bem, que está fazendo o que se espera: dando um erro! <img src='https://bot.to/wp-content/uploads/2020/10/sadface_5f7f351b46a7b.png' width='30'></li>
+<li>Vamos corrigir esse problema:</li>
+<li>Rode o <code>docker exec -it saleor bash</code> para criar um novo processo dentro de um container que já está rodando. E este novo processo será um bash.</li>
+<li>E rode um <code>ps -ef</code> para ver todos os processos disponíveis naquelea máquina.</li>
+<li>Rode o comando <code>env</code> para verificar todas as variáveis de ambiente disponíveis desta máquina.</li>
+<li>Rode um <code>./manage.py migrate</code> para criar as tabelas que não existiam até então (cuja ausência era a razão do erro que encontramos no browser.)</li>
+<li>Em seu browser atualize sua aba <a href='http://localhost:8000/'>localhost:8000</a> e voilà, a aplicação está rodando, sem erros.</li>
+<li>Para visualizar a área de admin rode o comando: <code>./manage.py createsuperuser</code> e insira a seguir o nome de usuário e a senha.</li>
+<li>Depois disso entre no <a href='http://localhost:8000/admin'>localhost:8000/admin</a> e insira as suas credenciais.</li>
+</ul>
+<h2 id="3-vamos-deployar-nosso-projeto">3 - Vamos deployar nosso projeto!</h2>
+<ul>
+<li>Navegue pelo terminal até sua pasta root do projeto desejado.</li>
+<li>Crie um arquivo chamado <em>Dockerfile</em>.</li>
+<li>Neste arquivo insira:</li>
+</ul>
+<pre><code>FROM python:3.8.10
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+COPY . /app
+CMD ./manage.py runserver 0.0.0.0:8000
+</code></pre>
+<ul>
+<li>Garanta que salvou o arquivo.</li>
+<li>E em seguida rode em um terminal o comando <code>docker build -t nome_do_seu_projeto .</code> para buildar a sua imagem.</li>
+<li>Se o Django do seu projeto está em uma versão menor que 4, isto deve ter funcionado sem problemas.</li>
+<li>Senão, coloque o python mais atual disponível no momento de sua tentativa no lugar da nossa versão "3.8.10".</li>
+<li>Em seguida, rode o comando para executar a sua imagem e criar um container a partir dela:</li>
+</ul>
+<pre><code>docker run -it -p 8000:8000 nome_da_sua_imagem ./manage.py runserver 0.0.0.0:8000
+</code></pre>
+<p>ou</p>
+<pre><code>docker run -it -p 8000:8000 nome_da_sua_imagem ./manage.py
+</code></pre>
+<ul>
+<li><strong>Explicação</strong></li>
+<li><em>0.0.0.0:8000</em> significa que estamos expondo essa porta para o mundo e agora ela fica acessível para qualquer um na internet que inserir no browser a url(ip_da_máquina_que_serve:8000)</li>
+<li>Para esse teste é necessário adicionar no <strong>settings.py</strong> o ip da máquina que vai acessar externamente aos "Allowed Hosts".</li>
+<li>Agora vamos criar um novo repositório no seu DockerHub.</li>
+<li>Rode o comando: <code>docker tag "nome_do_projeto:latest" username_do_dockerhub/nome_repositorio</code></li>
+<li>E em seguida rode o comando <code>docker push username_do_dockerhub/nome_repositorio</code></li>
+<li>A resposta do terminal deve ter sido várias mensagens de "<em>pushed</em>"</li>
+<li>A partir deste momento seu projeto está oficialmente dockerizado e pronto para ser servido por qualquer serviço.</li>
+</ul>
+<h2 id="4-o-ultimo-inimigo-aws">4 - O último inimigo: AWS.</h2>
+<ul>
+<li>Apesar de a AWS terem vários serviços, agora vamos nos concentrar no EC2.</li>
+<li>Aqui nós fomos privilegiados pelo professor que liberou máquinas para a turma inteira então não iremos cobrir esta parte aqui no guia.</li>
+<li>Em sua máquina da AWS rode o comando <code>sudo apt install nginx</code></li>
+<li>E em seguida instale o <em>docker</em></li>
+<li>Depois de <em>muitas</em> configurações (<strong>MUITAS MESMO</strong>), é chegada a hora de adicionar a nossa chave SSH às máquinas criadas lá na AWS.</li>
+<li>Através do seguinte comando:</li>
+</ul>
+<pre><code>ssh nomedousuario@nomedoprojeto.fimdodominio.com
+</code></pre>
+<ul>
+<li>Em seguida traga a sua imagem do DockerHub para a máquina da AWS com o comando: <code>docker pull nomedoprojeto</code></li>
+<li>Depois rode o projeto baixado com o comando: <code>docker run -d -p 8000:8000 --name nomedoprojeto</code></li>
+<li>A essa altura seu projeto já deveria estar no ar, verifique isso com os comandos <code>docker ps</code> e <code>docker logs -f nomedoprojeto</code>. Eles devem mostrar a exibição do seu projeto.</li>
+<li>O último passo é acrescentar este domínio ao grupo de segurança da AWS para permitir que ips externos possam acessá-lo.</li>
+<li>Insira no browser a url que você atribuiu ao projeto e perceba o que o browser te retorna. Se for um erro relacionado ao django, parabéns, você falhou com sucesso!</li>
+<li>Neste momento o que acontece é que o nginx precisa ser configurado para fazer o seu papel: gerenciar as urls e atribuir às portas corretas.</li>
+<li>Em seu computador crie um arquivo <em>nome.conf</em> no caminho: <em>/etc/nginx/sites-enabled/nome.conf</em> e este arquivo deve ter o seguinte conteúdo:</li>
+</ul>
+<pre><code>server {
+    listen       80;
+    server_name  nomedoprojeto.fimdodominio.com;
+    location / {
+        proxy_pass http://localhost:8001/;
+    include proxy_params;
+    }
+}
+</code></pre>
+<ul>
+<li>Perceba que neste caso a porta escolhida foi a 8001.</li>
+<li><strong>EM TESE</strong>, isto deve ter funcionado, mas a essa altura fica difícil saber qualquer coisa.</li>
+</ul>
+<h4 id="sugestao-redeploy">Sugestão - Redeploy:</h4>
+<ul>
+<li>Em sua máquina da AWS crie um script <em>deploy.sh</em> na raíz do seu projeto com o bloco de comandos:</li>
+</ul>
+<pre><code>docker build -t username_do_dockerhub/nome_repositorio .
+docker login
+docker push username_do_dockerhub/nome_repositorio
+ssh ubuntu@nome_repositorio.fimdodominio.com.br ./deploy.sh
+</code></pre>
+<h3 id="faq">FAQ</h3>
+<ul>
+<li>Perguntas:</li>
+<li>Qual a diferença de um <code>docker rm</code> e um <code>docker kill</code> ?<ul>
+<li><code>docker rm</code> <strong>remove</strong> um container que já está morto.</li>
+<li><code>docker kill</code> <strong>mata</strong> um container que está ativo.</li>
+</ul>
+</li>
+<li>Consigo ver as tabelas criadas através do Dbeaver ?<ul>
+<li>Sim, se tiver rodado o comando de criação com <em>-p</em>, mesmo sendo derrubado ele vai com os dados escritos.</li>
+</ul>
+</li>
+</ul>
+<h3 id="referencias">Referências</h3>
+<ul>
+<li><a href='https://evolutio.io/curso/deploy_profissa'>Evolutio - Deploy Profissa</a></li>
+<li><a href='https://docs.google.com/document/d/17lb15xL53529LRMvlb1rvwYdmy9Vj29Pp-ydli5Mwxg/edit'>Documentação Fantástica do Tony</a></li>
+<li><a href='https://docs.docker.com/engine/reference/commandline/run/'>Docker Documentação</a></li>
+<li><a href='https://www.linuxtips.io/blogs/novidades/entendendo-volumes-no-docker'>Docker - Volumes</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
